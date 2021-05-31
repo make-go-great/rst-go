@@ -29,6 +29,29 @@ func TestTitleString(t *testing.T) {
 	}
 }
 
+func TestSectionString(t *testing.T) {
+	tests := []struct {
+		name    string
+		section Section
+		want    string
+	}{
+		{
+			name: "sample section",
+			section: Section{
+				text: "section A",
+			},
+			want: "section A\n=========",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := tc.section.String()
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
 func TestListItemString(t *testing.T) {
 	tests := []struct {
 		name     string
