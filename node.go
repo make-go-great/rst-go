@@ -26,25 +26,25 @@ type Title struct {
 }
 
 func NewTitle(text string) Title {
+	text = strings.TrimSpace(text)
+
 	return Title{
 		text: text,
 	}
 }
 
 func (t Title) String() string {
-	text := strings.TrimSpace(t.text)
-
 	var builder strings.Builder
 
-	for i := 0; i < len(text); i++ {
+	for i := 0; i < len(t.text); i++ {
 		builder.WriteString(string(titleToken))
 	}
 
 	builder.WriteString("\n")
-	builder.WriteString(text)
+	builder.WriteString(t.text)
 	builder.WriteString("\n")
 
-	for i := 0; i < len(text); i++ {
+	for i := 0; i < len(t.text); i++ {
 		builder.WriteString(string(titleToken))
 	}
 
@@ -55,24 +55,32 @@ type Section struct {
 	text string
 }
 
-func NewSection(text string) Node {
-	return nil
+func NewSection(text string) Section {
+	text = strings.TrimSpace(text)
+
+	return Section{
+		text: text,
+	}
+}
+
+func (s Section) String() string {
+	return ""
 }
 
 type ListItem struct {
 	text string
 }
 
-func NewListItem(text string) Node {
+func NewListItem(text string) ListItem {
+	text = strings.TrimSpace(text)
+
 	return ListItem{
 		text: text,
 	}
 }
 
 func (i ListItem) String() string {
-	text := strings.TrimSpace(i.text)
-
-	return string(listToken) + " " + text
+	return string(listToken) + " " + i.text
 }
 
 func Equal(n1, n2 Node) bool {
