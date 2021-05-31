@@ -26,7 +26,7 @@ type title struct {
 }
 
 func (t title) String() string {
-	text := strings.TrimSpace(text)
+	text := strings.TrimSpace(t.text)
 
 	var builder strings.Builder
 
