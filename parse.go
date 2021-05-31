@@ -13,7 +13,12 @@ func Parse(lines []string) []Node {
 
 	for _, line := range lines {
 		if strings.HasPrefix(line, string(titleToken)) && strings.HasSuffix(line, string(titleToken)) {
-			//
+			nodes = append(nodes, parseTitle(line))
+			continue
+		}
+
+		if strings.HasSuffix(line, string(sectionToken)) {
+			nodes = append(nodes, parseSection(line))
 			continue
 		}
 
@@ -26,7 +31,7 @@ func Parse(lines []string) []Node {
 		}
 
 		if isListToken {
-			//
+			nodes = append(nodes, parseListItem(line))
 		}
 	}
 
@@ -39,19 +44,24 @@ func parseTitle(line string) (Title, bool) {
 		return Title{}, false
 	}
 
-	text := strings.TrimSpace(lines[1])
-
 	return Title{
-		text: text,
+		text: lines[1],
 	}, true
+}
+
+func parseSection(line string) (Section, bool) {
+	lines := strings.Split(line, "\n")
+	if len(lines) != 2 {
+		return Section{}, false
+	}
+
+	return NewSection(lines[0]), true
 }
 
 func parseListItem(line string) ListItem {
 	for listTok := range listTokens {
 		line = strings.TrimLeft(line, string(listTok))
 	}
-
-	line = strings.TrimSpace(line)
 
 	return ListItem{
 		text: line,
