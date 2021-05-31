@@ -25,6 +25,12 @@ type title struct {
 	text string
 }
 
+func NewTitle(text string) Node {
+	return title{
+		text: text,
+	}
+}
+
 func (t title) String() string {
 	text := strings.TrimSpace(t.text)
 
@@ -43,4 +49,24 @@ func (t title) String() string {
 	}
 
 	return builder.String()
+}
+
+type listItem struct {
+	text string
+}
+
+func NewListItem(text string) Node {
+	return listItem{
+		text: text,
+	}
+}
+
+func (i listItem) String() string {
+	text := strings.TrimSpace(i.text)
+
+	return string(listToken) + " " + text
+}
+
+func Equal(n1, n2 Node) bool {
+	return n1.String() == n2.String()
 }
