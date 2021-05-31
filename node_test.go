@@ -12,7 +12,7 @@ func TestTitleString(t *testing.T) {
 		title title
 	}{
 		{
-			name: "sample tititle",
+			name: "sample title",
 			title: title{
 				text: "title",
 			},
@@ -22,6 +22,28 @@ func TestTitleString(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			got := tc.title.String()
+			g := goldie.New(t)
+			g.Assert(t, tc.name, []byte(got))
+		})
+	}
+}
+
+func TestListItemString(t *testing.T) {
+	tests := []struct {
+		name     string
+		listItem listItem
+	}{
+		{
+			name: "sample list item",
+			listItem: listItem{
+				text: "item A",
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := tc.listItem.String()
 			g := goldie.New(t)
 			g.Assert(t, tc.name, []byte(got))
 		})
