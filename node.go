@@ -21,17 +21,17 @@ type Node interface {
 	String() string
 }
 
-type title struct {
+type Title struct {
 	text string
 }
 
-func NewTitle(text string) Node {
-	return title{
+func NewTitle(text string) Title {
+	return Title{
 		text: text,
 	}
 }
 
-func (t title) String() string {
+func (t Title) String() string {
 	text := strings.TrimSpace(t.text)
 
 	var builder strings.Builder
@@ -51,17 +51,25 @@ func (t title) String() string {
 	return builder.String()
 }
 
-type listItem struct {
+type Section struct {
+	text string
+}
+
+func NewSection(text string) Node {
+	return nil
+}
+
+type ListItem struct {
 	text string
 }
 
 func NewListItem(text string) Node {
-	return listItem{
+	return ListItem{
 		text: text,
 	}
 }
 
-func (i listItem) String() string {
+func (i ListItem) String() string {
 	text := strings.TrimSpace(i.text)
 
 	return string(listToken) + " " + text

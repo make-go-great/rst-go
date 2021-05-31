@@ -33,27 +33,27 @@ func Parse(lines []string) []Node {
 	return nodes
 }
 
-func parseTitle(line string) (title, bool) {
+func parseTitle(line string) (Title, bool) {
 	lines := strings.Split(line, "\n")
 	if len(lines) != 3 {
-		return title{}, false
+		return Title{}, false
 	}
 
 	text := strings.TrimSpace(lines[1])
 
-	return title{
+	return Title{
 		text: text,
 	}, true
 }
 
-func parseListItem(line string) listItem {
+func parseListItem(line string) ListItem {
 	for listTok := range listTokens {
 		line = strings.TrimLeft(line, string(listTok))
 	}
 
 	line = strings.TrimSpace(line)
 
-	return listItem{
+	return ListItem{
 		text: line,
 	}
 }

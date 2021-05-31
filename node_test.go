@@ -9,12 +9,12 @@ import (
 func TestTitleString(t *testing.T) {
 	tests := []struct {
 		name  string
-		title title
+		title Title
 		want  string
 	}{
 		{
 			name: "sample title",
-			title: title{
+			title: Title{
 				text: "title",
 			},
 			want: "=====\ntitle\n=====",
@@ -32,12 +32,12 @@ func TestTitleString(t *testing.T) {
 func TestListItemString(t *testing.T) {
 	tests := []struct {
 		name     string
-		listItem listItem
+		listItem ListItem
 		want     string
 	}{
 		{
 			name: "sample list item",
-			listItem: listItem{
+			listItem: ListItem{
 				text: "item A",
 			},
 			want: "- item A",
