@@ -3,27 +3,28 @@ package rst
 import (
 	"testing"
 
-	"github.com/sebdah/goldie/v2"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestTitleString(t *testing.T) {
 	tests := []struct {
 		name  string
 		title title
+		want  string
 	}{
 		{
 			name: "sample title",
 			title: title{
 				text: "title",
 			},
+			want: "=====\ntitle\n=====",
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			got := tc.title.String()
-			g := goldie.New(t)
-			g.Assert(t, tc.name, []byte(got))
+			assert.Equal(t, tc.want, got)
 		})
 	}
 }
@@ -32,20 +33,21 @@ func TestListItemString(t *testing.T) {
 	tests := []struct {
 		name     string
 		listItem listItem
+		want     string
 	}{
 		{
 			name: "sample list item",
 			listItem: listItem{
 				text: "item A",
 			},
+			want: "- item A",
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			got := tc.listItem.String()
-			g := goldie.New(t)
-			g.Assert(t, tc.name, []byte(got))
+			assert.Equal(t, tc.want, got)
 		})
 	}
 }
