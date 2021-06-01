@@ -48,7 +48,7 @@ func parseTitle(line string) (Title, bool) {
 		return Title{}, false
 	}
 
-	return NewTitle(lines[1]), false
+	return NewTitle(lines[1]), true
 }
 
 func parseSection(line string) (Section, bool) {
