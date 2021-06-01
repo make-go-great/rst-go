@@ -100,3 +100,26 @@ func TestParseSection(t *testing.T) {
 		})
 	}
 }
+
+func TestParseListItem(t *testing.T) {
+	tests := []struct {
+		name string
+		line string
+		want ListItem
+	}{
+		{
+			name: "sample list item",
+			line: "- item",
+			want: ListItem{
+				text: "item",
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := parseListItem(tc.line)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
