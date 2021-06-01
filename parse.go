@@ -1,6 +1,8 @@
 package rst
 
-import "strings"
+import (
+	"strings"
+)
 
 const defaultNodeLen = 10
 
