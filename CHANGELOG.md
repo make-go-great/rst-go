@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.2.0 (2021-06-03)
+
+### Added
+
+- feat: add sub section (#1) (2021-06-03)
+
+### Others
+
+- chore(changelog): generate v0.1.0 (2021-06-01)
+
 ## v0.1.0 (2021-06-01)
 
 ### Added
