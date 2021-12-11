@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v0.3.0 (2021-12-11)
+
+### Added
+
+- feat: Equal node ignore case (2021-12-11)
+
+### Others
+
+- chore: update gitignore (2021-12-11)
+
+- chore: bump go v1.17 (2021-12-11)
+
+- chore(changelog): generate v0.2.0 (2021-06-03)
+
 ## v0.2.0 (2021-06-03)
 
 ### Added
